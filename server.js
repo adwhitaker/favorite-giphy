@@ -2,18 +2,16 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-var gifs = require('./routes/favorites');
+var favorites = require('./routes/favorites');
+var count = require('./routes/favCount');
+var home = require('./routes/home');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.use('/home', gifs);
-
-// app.use('/favorites', gifs);
-
-app.use('/home', function (req, res) {
-  res.send('Hola');
-});
+app.use('/home', home);
+app.use('/favorites', favorites);
+app.use('/count', count);
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'public/views/index.html'));
