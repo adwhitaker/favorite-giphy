@@ -10,6 +10,10 @@ var pool = new pg.Pool(config);
 router.route('/')
       .get(getFavorites);
 
+router.route('/:id')
+      .put(updateFavorites)
+      .delete(deleteFavorites);
+
 function getFavorites(req, res) {
   pool.connect(function (err, client, done) {
     try {
@@ -28,6 +32,60 @@ function getFavorites(req, res) {
 
               res.send(result.rows);
             });
+    } finally {
+      done();
+    }
+  });
+};
+
+function updateFavorites(req, res) {
+  console.log('inside of fav');
+  pool.connect(function (err, client, done) {
+      try {
+        if (err) {
+          res.sendStatus(500);
+          return;
+        }
+
+        client.query('UPDATE gifs SET comment = $1, edited = $2 WHERE id = $3;',
+          [req.body.comment, true, req.params.id],
+          function (err, result) {
+            if (err) {
+              console.log('Issue querying the DB', err);
+              res.sendStatus(500);
+              return;
+            }
+
+            res.sendStatus(200);
+          });
+      } finally {
+        done();
+      }
+    });
+};
+
+function deleteFavorites(req, res) {
+  var id = req.params.id;
+
+  pool.connect(function (err, client, done) {
+    try {
+      if (err) {
+        console.log('Error connecting to the DB', err);
+        res.sendStatus(500);
+        return;
+      }
+
+      client.query('DELETE FROM todo WHERE id=$1;',
+      [id],
+      function (err, result) {
+        if (err) {
+          console.log('Error querying the database', err);
+          res.SendStatus(500);
+          return;
+        }
+
+        res.send(204);
+      });
     } finally {
       done();
     }
