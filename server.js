@@ -8,4 +8,7 @@ app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'public/views/index.html'));
 });
 
-app.listen(3000);
+var port = process.env.PORT || 3000;
+var server = app.listen(port, function () {
+  console.log('Listening on port ', server.address().port);
+});
