@@ -6,7 +6,8 @@ function linkPages($routeProvider, $locationProvider) {
     templateUrl: 'views/home.html',
     controller: 'HomeController as home'
   }).when('/favorites', {
-    templateUrl: 'views/favorites.html'
+    templateUrl: 'views/favorites.html',
+    controller: 'FavController as fav'
   });
 
   $locationProvider.html5Mode(true);
