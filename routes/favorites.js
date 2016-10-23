@@ -39,7 +39,8 @@ function getFavorites(req, res) {
 };
 
 function updateFavorites(req, res) {
-  console.log('inside of fav');
+  var id = req.params.id;
+  var comment = req.body.comment;
   pool.connect(function (err, client, done) {
       try {
         if (err) {
@@ -48,7 +49,7 @@ function updateFavorites(req, res) {
         }
 
         client.query('UPDATE gifs SET comment = $1, edited = $2 WHERE id = $3;',
-          [req.body.comment, true, req.params.id],
+          [comment, true, id],
           function (err, result) {
             if (err) {
               console.log('Issue querying the DB', err);
@@ -75,7 +76,7 @@ function deleteFavorites(req, res) {
         return;
       }
 
-      client.query('DELETE FROM todo WHERE id=$1;',
+      client.query('DELETE FROM gifs WHERE id=$1;',
       [id],
       function (err, result) {
         if (err) {
@@ -84,7 +85,7 @@ function deleteFavorites(req, res) {
           return;
         }
 
-        res.send(204);
+        res.sendStatus(204);
       });
     } finally {
       done();
