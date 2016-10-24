@@ -22,12 +22,13 @@
     <nav>
       <ul>
         <li><a href='/home'>Home</a></li>
-        <li><a href='/favorites'>Favorites</a> ({{main.counter}})</li>
+        <li><a href='/favorites'>Favorites</a> ({{main.counter.propertyThing.count}})</li>
       </ul>
+      {{main.counter}}
     </nav>
 
   </header>
-  
+
   <ng-view>
   </ng-view>
 

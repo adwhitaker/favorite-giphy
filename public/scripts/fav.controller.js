@@ -2,9 +2,13 @@ angular.module('favoriteGiphy')
        .controller('FavController', FavController);
 
 // favorites page controller
-function FavController($http) {
+function FavController($http, favCount) {
   var fav = this;
   fav.favorites = [];
+
+  // counter = {
+  //   count: fav.favorites.length,
+  // };
 
   console.log('FavController Loaded');
 
@@ -37,6 +41,7 @@ function FavController($http) {
          .then(function (response) {
             fav.favorites = [];
             fav.favoritesGet();
+            favCount.getCount();
           });
   };
 

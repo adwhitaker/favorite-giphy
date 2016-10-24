@@ -37,7 +37,7 @@ function HomeController(giphy, $http, favCount) {
     }).then(function (response) {
         console.log(response);
 
-        // favCount.GetCountAmount();
+        favCount.getCount();
       }, errorCallback);
 
   };

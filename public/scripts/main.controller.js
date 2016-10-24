@@ -4,7 +4,7 @@ angular.module('favoriteGiphy')
 // controller for the index.html page
 function MainController($http, favCount) {
   var main = this;
-  main.counter;
+  main.counter = favCount;
   console.log('MainController Loaded');
 
   main.getCount = function () {
@@ -13,7 +13,7 @@ function MainController($http, favCount) {
   };
 
   function successCount(response) {
-    main.counter = response.count;
+    // main.counter = response.count;
   };
 
   main.getCount()
