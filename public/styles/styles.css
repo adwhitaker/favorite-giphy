@@ -1,0 +1,54 @@
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+ol,
+li,
+p,
+a {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+body {
+  text-align: center;
+  margin: 0;
+}
+header {
+  background-color: lightsteelblue;
+  padding: 20px 0 20px 0;
+  margin-bottom: 10px;
+}
+nav ul li {
+  display: inline;
+  list-style: none;
+  padding: 10px 30px 10px 30px;
+  margin-right: 0;
+  }
+
+.favImage {
+  width: 300px;
+  height: 350px;
+  margin: 2px;
+  border: 2px solid lightgrey;
+  border-radius: 10px;
+  float: left;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+img {
+  width: 250px;
+  display: block;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+
+.hidden {
+  display: none;
+}

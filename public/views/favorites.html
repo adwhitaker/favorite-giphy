@@ -1,1 +1,10 @@
-<h1>Favorites!</h1>
+<h1>help</h1>
+<div class='favImage' ng-repeat="gif in fav.favorites">
+  <img ng-src='{{gif.url}}'/>
+  <p><a ng-href='{{gif.url}}'>Get Gif</a></p>
+  <!-- <p>id: {{gif.id}}</p>
+  <p>edited: {{gif.edited}}</p> -->
+  <!-- <button>DELETE</button> -->
+  <p>{{gif.comment}}</p>
+  <!-- <input type='text' name='comment' ng-model={{gif.comment}}> -->
+</div>

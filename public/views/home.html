@@ -1,18 +1,26 @@
-<h1>Home</h1>
+<main>
+  <div class='homeSearch'>
+    <h2>get a gif!</h2>
 
-<label>Get Another Gif!</label>
-<input type='text' name='search-query' value='' ng-model='home.query'>
-<button type='submit' ng-click='home.searchItem(home.query)'>Search</button>
-<button name='random' ng-click='home.randomSearch()'>I want a random Gif!</button>
+    <input type='text' name='search-query' value='' ng-model='home.query'>
+    <button type='submit' ng-click='home.searchItem(home.query)'>Search</button>
+    <button name='random' ng-click='home.randomSearch()'>I'm Feeling Random!</button>
+  </div>
 
-<div ng-repeat="gif in home.gifs">
-  <img ng-src="{{gif.images.original.url}}"/>
-  <p><a ng-href="{{gif.images.original.url}}">Get Gif</a></p>
-  <input type='text' name='comment' value=''>
-</div>
+  <div class='favImage' ng-repeat="gif in home.gifs">
+    <img ng-src="{{gif.images.original.url}}"/>
+    <p><a ng-href="{{gif.images.original.url}}">Get Gif</a></p>
+    <button ng-click='home.postFavGif(gif.images.original.url, home.comment)'>favorite</button>
+    <input type='text' name='comment' ng-model='home.comment' value=''>
+  </div>
 
-    <!-- picture result for random -->
-<div class="results">
-  <img ng-src="{{home.pic}}" />
-  <p><a ng-href="{{home.pic}}">Get Gif</a></p>
-</div>
+  <!-- picture result for random -->
+  <div ng-class='home.class'>
+    <div class='favImage'>
+      <img ng-src='{{home.pic}}' />
+      <p><a ng-href="{{home.pic}}">Get Gif</a></p>
+      <input type='text' name='comment' ng-model='home.comment' value=''>
+      <button ng-click='home.postFavGif(home.pic, home.comment)'>favorite</button>
+    </div>
+  </div>
+</main>
