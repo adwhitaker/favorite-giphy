@@ -7,8 +7,10 @@ function FavController($http) {
 
   console.log('FavController Loaded');
 
-  $http.get('/favorites')
-       .then(printFavorites, errorCallback);
+  fav.favoritesGet = function () {
+    $http.get('/fav')
+         .then(printFavorites, errorCallback);
+  };
 
   function printFavorites(response) {
     fav.favorites = response.data;
@@ -16,6 +18,25 @@ function FavController($http) {
     console.log(fav.favorites[0].url);
   };
 
+  fav.makeNewComment = function (comment, id) {
+    console.log(comment);
+    $http.put('/fav/' + id, { comment: comment })
+         .then(function (response) {
+            fav.favoritesGet();
+          });
+  };
+
+  fav.deleteFavorite = function (id) {
+    console.log('id', id);
+
+    $http.delete('/fav/' + id)
+         .then(function (response) {
+            fav.favorites = [];
+            fav.favoritesGet();
+          });
+  };
+
+  fav.favoritesGet();
 };
 
 function errorCallback(error) {
