@@ -1,6 +1,7 @@
 angular.module('favoriteGiphy')
        .controller('MainController', MainController);
 
+// controller for the index.html page
 function MainController($http, favCount) {
   var main = this;
   main.counter;

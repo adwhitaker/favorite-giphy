@@ -10,6 +10,7 @@ var pool = new pg.Pool(config);
 router.route('/')
       .get(getCount);
 
+// route to get count from DB
 function getCount(req, res) {
   pool.connect(function (err, client, done) {
     try {

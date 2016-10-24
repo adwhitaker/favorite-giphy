@@ -1,12 +1,14 @@
 angular.module('favoriteGiphy')
        .controller('FavController', FavController);
 
+// favorites page controller
 function FavController($http) {
   var fav = this;
   fav.favorites = [];
 
   console.log('FavController Loaded');
 
+  // function to get the current list of favorited gifs from the databse
   fav.favoritesGet = function () {
     $http.get('/fav')
          .then(printFavorites, errorCallback);
@@ -18,6 +20,7 @@ function FavController($http) {
     console.log(fav.favorites[0].url);
   };
 
+  // function to update comment in the db
   fav.makeNewComment = function (comment, id) {
     console.log(comment);
     $http.put('/fav/' + id, { comment: comment })
@@ -26,6 +29,7 @@ function FavController($http) {
           });
   };
 
+  // function to delete favorited gif in db
   fav.deleteFavorite = function (id) {
     console.log('id', id);
 
@@ -36,6 +40,7 @@ function FavController($http) {
           });
   };
 
+  // initial page load get gifs from db
   fav.favoritesGet();
 };
 

@@ -1,7 +1,7 @@
 angular.module('favoriteGiphy')
 .controller('HomeController', HomeController);
 
-function HomeController(giphy, $http) {
+function HomeController(giphy, $http, favCount) {
   var home = this;
   console.log('HomeController loaded');
 
@@ -36,9 +36,13 @@ function HomeController(giphy, $http) {
       url: '/home',
     }).then(function (response) {
         console.log(response);
+
+        // favCount.GetCountAmount();
       }, errorCallback);
 
   };
+
+  home.randomSearch();
 };
 
 function errorCallback(error) {

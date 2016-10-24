@@ -14,6 +14,7 @@ router.route('/:id')
       .put(updateFavorites)
       .delete(deleteFavorites);
 
+// get favorited gifs from the DB
 function getFavorites(req, res) {
   pool.connect(function (err, client, done) {
     try {
@@ -38,6 +39,7 @@ function getFavorites(req, res) {
   });
 };
 
+// updates favorited gif in DB
 function updateFavorites(req, res) {
   var id = req.params.id;
   var comment = req.body.comment;
@@ -65,6 +67,7 @@ function updateFavorites(req, res) {
     });
 };
 
+// deletes favorited gif from DB
 function deleteFavorites(req, res) {
   var id = req.params.id;
 

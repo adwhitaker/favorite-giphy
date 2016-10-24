@@ -10,6 +10,7 @@ var pool = new pg.Pool(config);
 router.route('/')
       .post(postFavorites);
 
+// adds new favorited gif to DB
 function postFavorites(req, res) {
   pool.connect(function (err, client, done) {
     console.log('req: ', req.body);
