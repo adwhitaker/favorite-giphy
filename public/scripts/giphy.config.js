@@ -8,6 +8,8 @@ function linkPages($routeProvider, $locationProvider) {
   }).when('/favorites', {
     templateUrl: 'views/favorites.html',
     controller: 'FavController as fav'
+  }).otherwise({
+    redirectTo: '/home',
   });
 
   $locationProvider.html5Mode(true);
