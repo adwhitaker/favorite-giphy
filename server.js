@@ -6,11 +6,12 @@ var favorites = require('./routes/favorites');
 var count = require('./routes/favCount');
 var home = require('./routes/home');
 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.use('/home', home);
-app.use('/favorites', favorites);
+app.use('/fav', favorites);
 app.use('/count', count);
 
 app.get('/*', function (req, res) {
