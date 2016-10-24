@@ -1,18 +1,21 @@
 angular.module('favoriteGiphy')
        .controller('MainController', MainController);
 
-function MainController($http) {
+function MainController($http, favCount) {
   var main = this;
   main.counter;
   console.log('MainController Loaded');
 
-  $http.get('/count').then(successCallback, errorCallback);
-
-  function successCallback(response) {
-    var amount = response.data[0];
-    main.counter = amount.count;
+  main.getCount = function () {
+    favCount.getCount()
+            .then(successCount, errorCallback);
   };
 
+  function successCount(response) {
+    main.counter = response.count;
+  };
+
+  main.getCount()
 };
 
 function errorCallback(error) {
