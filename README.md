@@ -1,6 +1,9 @@
 # Your Favorite Giphy(/ies)
 
-You can search the giphy website for gifs with either a random or word search. Gifs can be saved and commented on.
+
+This application searches the Giphy website, connecting throught the Giphy API, and returns either a random gif or gifs related to a keyword search. Gifs can then be favorited and commented on; the information is stored in the database. This information is then accessed and displayed on the favorites page.
+
+This was an assignment while at Prime.
 
 ## Features
 ### Home Page
@@ -14,8 +17,12 @@ You can search the giphy website for gifs with either a random or word search. G
 - gifs can be deleted from the favorites list
 
 ## Running the server
-- requires npm, express, body-parser, pg, and postgresql
-- sql setup can be found in the database.sql
+- requires NPM, ExpressJS, Body-Parser, AngularJS and PostgreSQL
+- SQL setup can be found in the database.sql
+- run npm init
+- enter npm start in the terminal to start server
+- ^ + c stops the server
+- go to localhost:3000 to view the page
 
 ## Authors
 - Alex Whitaker
