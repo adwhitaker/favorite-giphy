@@ -21,7 +21,7 @@ This was an assignment while at Prime.
 - SQL setup can be found in the database.sql
 - run npm init
 - enter npm start in the terminal to start server
-- ^ + c stops the server
+- control + c stops the server
 - go to localhost:3000 to view the page
 
 ## Authors
